@@ -172,8 +172,16 @@
     <script>
         document.getElementById('save-contact').addEventListener('click', function (e) {
             e.preventDefault();
-            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Anna Voloshenko\nORG:SteelOrbisTITLE:Market Intelligence Head Division - Turkey/MENA, EU, CIS\nTEL;TYPE=CELL,VOICE:+905309696679\nEMAIL;TYPE=WORK,INTERNET:avoloshenko@steelorbis.com\nURL:https://www.steelorbis.com\nEND:VCARD";
-            
+            const vcard = "BEGIN:VCARD\n" +
+                      "VERSION:3.0\n" +
+                      "N:Voloshenko;Anna;;;\n" + 
+                      "FN:Anna Voloshenko\n" +
+                      "ORG:SteelOrbis\n" +
+                      "TITLE:Market Intelligence Head Division - Turkey/MENA, EU, CIS\n" +
+                      "TEL;TYPE=CELL,VOICE:+905309696679\n" +
+                      "EMAIL;TYPE=WORK,INTERNET:avoloshenko@steelorbis.com\n" +
+                      "URL:https://www.steelorbis.com\n" +
+                      "END:VCARD";
             const blob = new Blob([vcard], { type: 'text/vcard' });
             const url = window.URL.createObjectURL(blob);
             const newLink = document.createElement('a');
