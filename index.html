@@ -232,7 +232,7 @@
                 <div class="icon"><svg><use href="#icon-phone"/></svg></div>
                 <span data-i18n="call">Call</span>
             </a>
-            <a href="/cdn-cgi/l/email-protection#6a0b1c05060519020f0401052a191e0f0f06051808031944090507" class="quick-btn">
+            <a id="quick-email-link" href="#" class="quick-btn">
                 <div class="icon"><svg><use href="#icon-email"/></svg></div>
                 <span data-i18n="email">Email</span>
             </a>
@@ -251,10 +251,10 @@
                 </div>
             </a>
 
-            <a href="/cdn-cgi/l/email-protection#88e9fee7e4e7fbe0ede6e3e7c8fbfcedede4e7faeae1fba6ebe7e5" class="contact-item">
+            <a id="email-link" href="#" class="contact-item">
                 <div class="icon"><svg><use href="#icon-email"/></svg></div>
                 <div class="info-block">
-                    <span class="value"><span class="__cf_email__" data-cfemail="fe9f889192918d969b909591be8d8a9b9b92918c9c978dd09d9193">[email&#160;protected]</span></span>
+                    <span class="value" id="email-value">avoloshenko@steelorbis.com</span>
                     <span class="label" data-i18n="emailLabel">Email</span>
                 </div>
             </a>
@@ -361,7 +361,16 @@
         // ============================================================
         // ✅ КНОПКА ADD TO CONTACTS: ripple + haptic + анімація
         // ============================================================
-        document.getElementById('save-contact').addEventListener('click', function (e) {
+        // ✅ Email через JS — захист від Cloudflare obfuscation
+        (function() {
+            const u = 'avoloshenko';
+            const d = 'steelorbis.com';
+            const mailto = 'mailto:' + u + '@' + d;
+            const el = document.getElementById('email-link');
+            const el2 = document.getElementById('quick-email-link');
+            if (el) el.href = mailto;
+            if (el2) el2.href = mailto;
+        })();
             const btn = this;
 
             // Haptic feedback (вібрація на мобільних)
